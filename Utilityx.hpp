@@ -8,8 +8,10 @@
 //#define ref &
 #define elif else if
 #define lambda [&]
-#define def auto;
-#define fn auto;
+#define def auto
+#define fn auto
+#define pub public:
+#define priv private:
 #define clambda(fn_body,...) struct { auto operator()(__VA_ARGS__) {fn_body; }
 namespace std {
 	int		atoi(bool& v)		{ return v ? 1 : 0; };
