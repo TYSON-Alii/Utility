@@ -1,0 +1,28 @@
+#define rep(v, j)	for (decltype(v) i = 0; i < v; i += j)
+#define Once(v)		for (static bool v = true; v; v = false)
+#define pass {}
+#define namestr(x) #x
+#define newln std::cout<<'\n';
+#define self (*this)
+#define var auto&
+#define ref &
+#define elif else if
+#define lambda [&]
+#define def auto
+#define fn auto
+#define pub public:
+#define priv private:
+#define then {
+#define end }
+#define is ==
+#define in :
+#define global ::
+#define set =
+#define ret return
+#define to ->
+#define none NULL
+#define alias using
+#define del delete
+#define op operator
+#define randf ((float)std::rand()/(float)RAND_MAX)
+#define clambda(fn_body,...) struct { auto operator()(__VA_ARGS__) {fn_body; }
