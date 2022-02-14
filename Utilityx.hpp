@@ -1,3 +1,8 @@
+#include <iostream>
+#include <utility>
+#include <vector>
+#include <map>
+#include <memory>
 #define rep(v, j)	for (decltype(v) i = 0; i < v; i += j)
 #define Once(v)		for (static bool v = true; v; v = false)
 #define pass {}
@@ -5,19 +10,29 @@
 #define newln std::cout<<'\n';
 #define self (*this)
 #define var auto&
-//#define ref &
+#define ref &
 #define elif else if
 #define lambda [&]
 #define def auto
 #define fn auto
 #define pub public:
 #define priv private:
+#define then {
+#define end }
+#define is ==
+#define in :
+#define global ::
+#define set =
+#define ret return
+#define to ->
+#define randf ((float)std::rand()/(float)RAND_MAX)
 #define clambda(fn_body,...) struct { auto operator()(__VA_ARGS__) {fn_body; }
+//#define dotspace(_name,body) struct { } _name;
 namespace std {
 	int		atoi(bool& v)		{ return v ? 1 : 0; };
 	float	atof(bool& v)		{ return v ? 1.f : 0.f; };
-	bool	atob(const char* v)	{ return (std::string(v) == "true" || std::string(v) == "1") ? true : false; };
-	bool	atob(std::string v)	{ return (v == "true" || v == "1") ? true : false; };
+	//bool	atob(const char* v)	{ return (std::string(v) == "true" || std::string(v) == "1") ? true : false; };
+	bool	atob(const std::string& v)	{ return (v == "true" || v == "1") ? true : false; };
 };
 void printx() { std::cout << '\n'; };
 template <typename T, typename ...TAIL>
