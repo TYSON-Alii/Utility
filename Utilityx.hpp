@@ -25,9 +25,15 @@
 #define set =
 #define ret return
 #define to ->
+#define none NULL
+#define alias using
+#define del delete
+#define op operator
 #define randf ((float)std::rand()/(float)RAND_MAX)
 #define clambda(fn_body,...) struct { auto operator()(__VA_ARGS__) {fn_body; }
 //#define dotspace(_name,body) struct { } _name;
+alias real = float;
+alias str = std::string;
 namespace std {
 	int		atoi(bool& v)		{ return v ? 1 : 0; };
 	float	atof(bool& v)		{ return v ? 1.f : 0.f; };
