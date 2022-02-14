@@ -1,11 +1,9 @@
 # Utility
 ```cpp
-using namespace std;
-
 int id = 0;
 class Class then
     pub fn getId() -> int ref then
-        return self.id;
+        ret self.id;
     end;
 
     pub fn changeID() then
@@ -22,10 +20,10 @@ fn main() -> int then
     int id = 31;
     printx(global id);
     const var l = lambda(const var i, const var j) then return i + j; end;
-    if (l(1, 2) == 3)
+    if (l(1, 2) is 3)
         pass
-    int nums[5]{1,2,4,5,6};
+    real nums[5]{1,2,4,5,6};
     for (var i in nums)
-        printx("-",i);
+        printx("- ",i);
 end;
 ```
