@@ -3,8 +3,8 @@
 #include <vector>
 #include <map>
 #include <memory>
-#define rep(v, j)	for (decltype(v) i = 0; i < v; i += j)
-#define Once(v)		for (static bool v = true; v; v = false)
+#define rep(v, j) for (decltype(v) i = 0; i < v; i += j)
+#define Once(v)   for (static bool v = true; v; v = false)
 #define pass {}
 #define namestr(x) #x
 #define newln std::cout<<'\n';
@@ -35,10 +35,9 @@
 alias real = float;
 alias str = std::string;
 namespace std {
-	int		atoi(bool& v)		{ return v ? 1 : 0; };
-	float	atof(bool& v)		{ return v ? 1.f : 0.f; };
-	//bool	atob(const char* v)	{ return (std::string(v) == "true" || std::string(v) == "1") ? true : false; };
-	bool	atob(const std::string& v)	{ return (v == "true" || v == "1") ? true : false; };
+	int   atoi(bool& v) { return v ? 1 : 0; };
+	float atof(bool& v) { return v ? 1.f : 0.f; };
+	bool  atob(const std::string& v) { return (v == "true" || v == "1") ? true : false; };
 };
 void printx() { std::cout << '\n'; };
 template <typename T, typename ...TAIL>
