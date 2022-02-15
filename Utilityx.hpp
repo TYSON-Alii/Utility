@@ -9,7 +9,7 @@
 #define namestr(x) #x
 #define newln std::cout<<'\n';
 #define self (*this)
-#define var auto&
+#define var auto
 #define ref &
 #define elif else if
 #define lambda [&]
@@ -31,7 +31,7 @@
 #define op operator
 #define randf ((float)std::rand()/(float)RAND_MAX)
 #define clambda(fn_body,...) struct { auto operator()(__VA_ARGS__) {fn_body; }
-//#define dotspace(_name,body) struct { } _name;
+#define dotspace(_name,body) struct { body } _name;
 alias real = float;
 alias str = std::string;
 namespace std {
