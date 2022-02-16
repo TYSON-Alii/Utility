@@ -30,6 +30,9 @@
 #define alias using
 #define del delete
 #define op operator
+#define True true
+#define False false
+#define boolean bool
 #define randf ((float)std::rand()/(float)RAND_MAX)
 #define clambda(fn_body,...) struct { auto operator()(__VA_ARGS__){fn_body;}}
 #define dotspace(_name,body) struct { body } _name;
