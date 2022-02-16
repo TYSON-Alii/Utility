@@ -2,6 +2,7 @@
 #include <utility>
 #include <vector>
 #include <map>
+#include <unordered_map>
 #include <memory>
 #define rep(v, j) for (decltype(v) i = 0; i < v; i += j)
 #define once(v)   for (static bool v = true; v; v = false)
@@ -34,6 +35,8 @@
 #define dotspace(_name,body) struct { body } _name;
 alias real = float;
 alias str = std::string;
+template <typename T>
+alias dict = std::unordered_map<str, T>;
 namespace std {
 	int   atoi(bool& v) { return v ? 1 : 0; };
 	float atof(bool& v) { return v ? 1.f : 0.f; };
