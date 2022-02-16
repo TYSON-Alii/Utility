@@ -32,6 +32,11 @@ class User then
 end;
 
 fn main() -> int then
+    dict<int> mydict;
+    mydict.insert({ "tysob",5 });
+    mydict.insert({ "aaaaaa",17 });
+    mydict.insert({ "fdsfsf",16 });
+    printx(mydict["tysob"]);
     aaa.changeFoo();
     printx(aaa.foo);
     User v1, v2;
