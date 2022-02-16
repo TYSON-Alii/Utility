@@ -4,7 +4,7 @@
 #include <map>
 #include <memory>
 #define rep(v, j) for (decltype(v) i = 0; i < v; i += j)
-#define Once(v)   for (static bool v = true; v; v = false)
+#define once(v)   for (static bool v = true; v; v = false)
 #define pass {}
 #define namestr(x) #x
 #define newln std::cout<<'\n';
@@ -30,7 +30,7 @@
 #define del delete
 #define op operator
 #define randf ((float)std::rand()/(float)RAND_MAX)
-#define clambda(fn_body,...) struct { auto operator()(__VA_ARGS__) {fn_body; }
+#define clambda(fn_body,...) struct { auto operator()(__VA_ARGS__){fn_body;}}
 #define dotspace(_name,body) struct { body } _name;
 alias real = float;
 alias str = std::string;
