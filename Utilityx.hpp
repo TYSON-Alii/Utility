@@ -43,7 +43,7 @@ alias dict = std::unordered_map<str, T>;
 namespace std {
 	int   atoi(bool& v) { return v ? 1 : 0; };
 	float atof(bool& v) { return v ? 1.f : 0.f; };
-	bool  atob(const std::string& v) { return (v == "true" || v == "1") ? true : false; };
+	bool  atob(const std::string& v) { return (v == "1" or v == "true" or v == "True") ? true : false; };
 };
 void printx() { std::cout << '\n'; };
 template <typename T, typename ...TAIL>
