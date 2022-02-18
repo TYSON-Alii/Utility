@@ -31,7 +31,13 @@ class User then
     priv int id = rand();
 end;
 
+fn func() then
+    printx("hi..");
+end;
+
 fn main() -> int then
+    func_ptr<void> fptr = func;
+    fptr();
     dict<int> mydict;
     mydict.insert({ "tysob",5 });
     mydict.insert({ "aaaaaa",17 });
