@@ -1,4 +1,21 @@
-# Utility
+## Utility
+### Keywords
+|   a - d  |   g - n   |  o - r |  s - z |
+| -------- | --------- | ------ | ------ |
+| boolean  | global    | once   | self   |
+| clambda  | hash_sign | op     | self_t |
+| comment  | in        | pass   | set    |
+| copyof   | is        | priv   | str    |
+| del      | lambda    | pub    | temp   |
+| dict     | let       | printx | then   |
+| dotspace | list      | ptr    | to     |
+| echo     | namestr   | puts   | True   |
+| elif     | newln     | randf  | typeof |
+| end      | none      | real   | var    |
+| fn       | null      | ref    | when   |
+| func_ptr | new_v     | rep    |        |
+| False    |           | ret    |        |
+## Simple Code 
 ```cpp
 int id = 0;
 dotspace(aaa,
