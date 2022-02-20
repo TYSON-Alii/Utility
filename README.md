@@ -1,6 +1,6 @@
 ## Utility
 ### Keywords
-|   a - d  |   g - n   |  o - r |  s - z |
+|   a - f  |   g - n   |  o - r |  s - z |
 | -------- | --------- | ------ | ------ |
 | boolean  | global    | once   | self   |
 | clambda  | hash_sign | op     | self_t |
