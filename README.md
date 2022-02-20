@@ -24,6 +24,7 @@ dotspace(aaa,
         foo = rand() % 2 == 0;
     end;
     priv int secret = 31;
+    pub alias Int = int;
 )
 class User then
     pub User() = default;
@@ -32,14 +33,14 @@ class User then
     end;
 
     pub fn changeID() then
-        const var old = self.id;
+        const let old = self.id;
         do then
             self.id = rand();
         end while (not self.id is old);
     end;
 
     pub fn op, (User ref another) -> User ref then // swap
-        const var copy = self;
+        const let copy = self;
         self = another;
         another = copy;
         ret self;
@@ -48,29 +49,30 @@ class User then
     priv int id = rand();
 end;
 
-fn func() then
+fn func() -> int then
     printx("hi..");
+    ret 31;
 end;
 
 fn main() -> int then
-    func_ptr<void> fptr = func;
+    func_ptr<int> fptr = func; comment(selam meraba)
     fptr();
     dict<int> mydict;
     mydict.insert({ "tysob",5 });
     mydict.insert({ "aaaaaa",17 });
     mydict.insert({ "fdsfsf",16 });
-    printx(mydict["tysob"]);
+    echo mydict["tysob"];
     aaa.changeFoo();
-    printx(aaa.foo);
+    puts aaa.foo;
     User v1, v2;
     v1, v2;
     int id = 31;
     printx(global id);
-    const var& l = lambda(const var& i, const var& j) then return i + j; end;
+    const var l = lambda(const var i, const var j) then return i + j; end;
     if (l(1, 2) is 3)
         pass
     real nums[5]{1,2,4,5,6};
-    for (var i in nums)
+    for (let i in nums)
         printx("- ",i);
 end;
 ```
