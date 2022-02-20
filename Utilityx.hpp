@@ -11,7 +11,8 @@
 #define namestr(x) #x
 #define newln std::cout<<'\n';
 #define self (*this)
-#define var auto
+#define var auto&
+#define let auto
 #define ref &
 #define elif else if
 #define lambda [&]
@@ -26,14 +27,23 @@
 #define set =
 #define ret return
 #define to ->
+#define typeof decltype
+#define null NULL
 #define none NULL
 #define None NULL
-#define new_ptr(v) (new decltype(v)(v))
+#define new_v(v) (new typeof(v)(v))
+#define copyof(v) (*(new_v(v)))
+#define self_t typeof(self)
+#define echo std::cout <<
+#define puts std::cout <<
+#define when switch
 #define alias using
 #define del delete
 #define op operator
 #define True true
 #define False false
+#define temp template
+#define comment(v) /##*comment*/
 #define randf ((float)std::rand()/(float)RAND_MAX)
 #define clambda(fn_body,...) struct { auto operator()(__VA_ARGS__){fn_body;}}
 #define dotspace(_name,body) struct { body } _name;
@@ -41,18 +51,18 @@
 alias real = float;
 alias boolean = bool;
 alias str = std::string;
-template <typename T> alias dict = std::unordered_map<str, T>;
-template <typename T> alias list = std::pmr::vector<T>;
-template <typename Return_t> alias func_ptr = Return_t(*)();
+temp <typename T> alias dict = std::unordered_map<str, T>;
+temp <typename T> alias list = std::pmr::vector<T>;
+temp <typename Return_t> alias func_ptr = Return_t(*)();
 //template <typename Return_t, typename ...Args> alias func_ptr = Return_t(*)(Args...);
 typedef void* ptr;
 namespace std {
 	inline int  atoi(boolean& v) then ret v ? 1 : 0; end;
 	inline real atof(boolean& v) then ret v ? 1.f : 0.f; end;
-	inline boolean atob(const str& v) then ret (v == "1" or v == "true" or v == "True") ? True : False; end;
+	inline boolean atob(const str& v) then ret (v is "1" or v is "true" or v is "True") ? True : False; end;
 };
 fn printx() then std::cout << '\n'; end;
-template <typename T, typename ...TAIL>
+temp <typename T, typename ...TAIL>
 fn printx(const T& v, TAIL... tail) then
 	std::cout << v;
 	printx(tail...);
