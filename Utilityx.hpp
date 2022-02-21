@@ -36,6 +36,7 @@
 #define self_t typeof(self)
 #define echo std::cout <<
 #define puts std::cout <<
+#define if_else(condition,if,else) ((condition)?(if):(else))
 #define when switch
 #define alias using
 #define del delete
@@ -57,11 +58,12 @@ temp <typename Return_t> alias func_ptr = Return_t(*)();
 //template <typename Return_t, typename ...Args> alias func_ptr = Return_t(*)(Args...);
 typedef void* ptr;
 namespace std {
-	inline int  atoi(boolean& v) then ret v ? 1 : 0; end;
-	inline real atof(boolean& v) then ret v ? 1.f : 0.f; end;
-	inline boolean atob(const str& v) then ret (v is "1" or v is "true" or v is "True") ? True : False; end;
+	inline int  atoi(boolean ref v) then ret v ? 1 : 0; end;
+	inline real atof(boolean ref v) then ret v ? 1.f : 0.f; end;
+	inline boolean atob(const str ref v) then ret (v is "1" or v is "true" or v is "True") ? True : False; end;
 };
-fn printx() then std::cout << '\n'; end;
+//#define printx(...) std::cout __VA_OPT__(<<) __VA_ARGS__ << '\n';
+fn printx() then newln; end;
 temp <typename T, typename ...TAIL>
 fn printx(const T& v, TAIL... tail) then
 	std::cout << v;
