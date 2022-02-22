@@ -1,20 +1,19 @@
 ## Utility [C++ With Macros]
 ### Keywords
-|   a - f  |   g - n   |  o - r |  s - z |
-| -------- | --------- | ------ | ------ |
-| boolean  | global    | once   | self   |
-| clambda  | hash_sign | op     | self_t |
-| comment  | in        | pass   | set    |
-| copyof   | is        | priv   | str    |
-| del      | lambda    | pub    | temp   |
-| dict     | let       | printx | then   |
-| dotspace | list      | ptr    | to     |
-| echo     | namestr   | puts   | True   |
-| elif     | newln     | randf  | typeof |
-| end      | none      | real   | var    |
-| fn       | null      | ref    | when   |
-| func_ptr | new_v     | rep    |        |
-| False    |           | ret    |        |
+|   a - e  |   f - l   |  n - p  |  p - s |  t - z |
+| -------- | --------- | ------- | ------ | ------ |
+| alias    | fn        | namestr | ptr    | temp   |
+| boolean  | func_ptr  | newln   | puts   | then   |
+| clambda  | False     | none    | randf  | to     |
+| comment  | global    | null    | real   | True   |
+| copyof   | hash_sign | new_v   | ref    | typeof |
+| del      | if_else   | once    | rep    | var    |
+| dict     | in        | Once    | ret    | when   |
+| dotspace | integer   | op      | self   | $      |
+| echo     | is        | pass    | self_t |  |
+| elif     | lambda    | priv    | set    |  |
+| end      | let       | pub     | str    |  |
+|          | list      | print   | sto    |  |
 ## Simple Code 
 ```cpp
 int id = 0;
