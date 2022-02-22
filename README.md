@@ -23,7 +23,6 @@ dotspace(aaa,
         foo = rand() % 2 == 0;
     end;
     priv int secret = 31;
-    pub alias Int = int;
 )
 class User then
     pub User() = default;
@@ -49,12 +48,14 @@ class User then
 end;
 
 fn func() -> int then
-    printx("hi..");
+    print("hi..");
     ret 31;
 end;
 
 fn main() -> int then
-    func_ptr<int> fptr = func; comment(selam meraba)
+    rep(i,10u,1)
+        Once(echo "hello\n")
+    func_ptr<int> fptr = func; $ selam meraba
     fptr();
     dict<int> mydict;
     mydict.insert({ "tysob",5 });
@@ -66,12 +67,12 @@ fn main() -> int then
     User v1, v2;
     v1, v2;
     int id = 31;
-    printx(global id);
+    print(global id);
     const var l = lambda(const var i, const var j) then return i + j; end;
     if (l(1, 2) is 3)
         pass
     real nums[5]{1,2,4,5,6};
     for (let i in nums)
-        printx("- ",i);
+        print("- ",i);
 end;
 ```
