@@ -1,3 +1,5 @@
+#ifndef XS_UTILITY
+#define XS_UTILITY 0
 #include <iostream>
 #include <utility>
 #include <string>
@@ -8,7 +10,7 @@
 #define hash_sign #
 #define rep(i, count, num) for (decltype(count) i = 0; i < count; i += num)
 #define once(v)   for (static boolean v = True; v; v = False)
-#define Once(body) {static const auto& Once = []() { body; return nullptr; }(); }
+#define Once(body) {static const auto& Once = [&]() { body; return nullptr; }(); }
 #define pass {}
 #define namestr(x) #x
 #define newln std::cout<<'\n';
@@ -48,6 +50,7 @@
 #define temp template
 #define comment(v) /##*comment*/
 #define $ /##/
+//#define meta(m) static const auto& _meta = [&]() { m; return true; }();
 #define randf ((float)std::rand()/(float)RAND_MAX)
 #define clambda(fn_body,...) struct { fn operator()(__VA_ARGS__){fn_body;}}
 #define dotspace(_name,body) struct { body } _name;
@@ -72,13 +75,15 @@ end;
 static const char alphabet[26]{ 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
 static const char ALPHABET[26]{ 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
 
+#ifndef _XS_VEX2_
 temp <typename T> T sto(const std::string&);
 temp <> inline int sto<int>(const std::string& _str) { return std::stoi(_str); };
 temp <> inline real sto<real>(const std::string& _str) { return std::stof(_str); };
 temp <> inline double sto<double>(const std::string& _str) { return std::stod(_str); };
 temp <> inline long double sto<long double>(const std::string& _str) { return std::stold(_str); };
-temp <> inline size_t sto<size_t>(const std::string& _str) { return (size_t)std::stoi(_str); };
+temp <> inline unsigned sto<unsigned>(const std::string& _str) { return (size_t)std::stoi(_str); };
 temp <> inline long sto<long>(const std::string& _str) { return std::stol(_str); };
 temp <> inline long long sto<long long>(const std::string& _str) { return std::stoll(_str); };
 temp <> inline unsigned long long sto<unsigned long long>(const std::string& _str) { return std::stoull(_str); };
-temp <> inline unsigned long long sto<unsigned long long>(const std::string& _str) { return std::stoull(_str); };
+#endif
+#endif
