@@ -104,7 +104,7 @@ temp <> inline int sto<int>(const std::string& _str) { return std::stoi(_str); }
 temp <> inline real sto<real>(const std::string& _str) { return std::stof(_str); };
 temp <> inline double sto<double>(const std::string& _str) { return std::stod(_str); };
 temp <> inline long double sto<long double>(const std::string& _str) { return std::stold(_str); };
-temp <> inline unsigned sto<unsigned>(const std::string& _str) { return (size_t)std::stoi(_str); };
+temp <> inline unsigned sto<unsigned>(const std::string& _str) { return (unsigned)std::stoi(_str); };
 temp <> inline long sto<long>(const std::string& _str) { return std::stol(_str); };
 temp <> inline long long sto<long long>(const std::string& _str) { return std::stoll(_str); };
 temp <> inline unsigned long long sto<unsigned long long>(const std::string& _str) { return std::stoull(_str); };
