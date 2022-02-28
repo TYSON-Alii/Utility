@@ -1,8 +1,19 @@
 #ifndef XS_UTILITY
 #define XS_UTILITY 0
-#include <iostream>
 #include <utility>
 #include <string>
+#include <iostream>
+#include <sstream>
+#include <fstream>
+#include <array>
+#include <deque>
+#include <bitset>
+#include <tuple>
+#include <typeinfo>
+//#include <format>
+#include <algorithm>
+#include <execution>
+//#include <concepts>
 #include <vector>
 #include <map>
 #include <unordered_map>
@@ -56,9 +67,21 @@
 #define dotspace(_name,body) struct { body } _name;
 //#define def(func_name,...) hash_sign define func_name(__VA_ARGS__)
 alias real = float;
+#ifndef _XSLIB2_
 alias boolean = bool;
+#endif
 alias str = std::string;
 alias integer = int;
+alias i8 = std::int8_t;
+alias i16 = std::int16_t;
+alias i32 = std::int32_t;
+alias i64 = std::int64_t;
+alias u8 = std::uint8_t;
+alias u16 = std::uint16_t;
+alias u32 = std::uint32_t;
+alias u64 = std::uint64_t;
+alias f32 = float;
+alias f64 = double;
 temp <typename T> alias dict = std::unordered_map<str, T>;
 temp <typename T> alias list = std::pmr::vector<T>;
 temp <typename Return_t, typename ...Args> alias func_ptr = Return_t(*)(Args...);
