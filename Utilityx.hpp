@@ -1,23 +1,38 @@
 #ifndef XS_UTILITY
 #define XS_UTILITY 0
+template <typename T1, typename T2>
+struct pair {
+	T1 first;
+	T2 second;
+};
 #include <utility>
 #include <string>
+using std::string;
+using std::to_string;
 #include <iostream>
+using std::cout;
 #include <sstream>
 #include <fstream>
 #include <array>
 #include <deque>
 #include <bitset>
 #include <tuple>
+using std::tuple;
 #include <typeinfo>
 //#include <format>
 #include <algorithm>
 #include <execution>
-//#include <concepts>
+#include <concepts>
 #include <vector>
+#include <list>
 #include <map>
 #include <unordered_map>
 #include <memory>
+using namespace std::string_literals;
+template <class T> concept container_t = requires(T a) {
+	{ a.begin() } -> std::convertible_to<typename T::iterator>;
+	{ a.end() } -> std::convertible_to<typename T::iterator>;
+};
 #define hash_sign #
 #define rep(i, count, num) for (decltype(count) i = 0; i < count; i += num)
 #define once(v)   for (static boolean v = True; v; v = False)
@@ -59,10 +74,9 @@
 #define True true
 #define False false
 #define temp template
-#define comment(v) /##*comment*/
+#define comment(v)
 #define $ /##/
 //#define meta(m) static const auto& _meta = [&]() { m; return true; }();
-#define randf ((float)std::rand()/(float)RAND_MAX)
 #define clambda(fn_body,...) struct { fn operator()(__VA_ARGS__){fn_body;}}
 #define dotspace(_name,body) struct { body } _name;
 //#define def(func_name,...) hash_sign define func_name(__VA_ARGS__)
@@ -83,6 +97,7 @@ alias u64 = std::uint64_t;
 alias f32 = float;
 alias f64 = double;
 temp <typename T> alias dict = std::unordered_map<str, T>;
+temp <typename T> alias linked_list = std::list<T>;
 temp <typename T> alias list = std::pmr::vector<T>;
 temp <typename Return_t, typename ...Args> alias func_ptr = Return_t(*)(Args...);
 typedef void* ptr;
@@ -91,13 +106,27 @@ namespace std then
 	inline real atof(boolean ref v) then ret v ? 1.f : 0.f; end;
 	inline boolean atob(const str ref v) then ret (v is "1" or v is "true" or v is "True") ? True : False; end;
 end;
+#undef end
+template <typename T> std::ostream& operator<<(std::ostream& os, const list<T>& v) {
+	const char& beg_char = '[', end_char = ']';
+	if (not v.empty()) {
+		const str& sep = ", ";
+		os << beg_char;
+		const auto& e = v.end() - 1;
+		for (auto b = v.begin(); b != e; b++) os << *b << sep;
+		os << *v.rbegin() << end_char;
+	}
+	else os << beg_char << ' ' << end_char;
+	return os;
+};
+#define end }
 temp <typename ...Args_t>
 inline fn print(Args_t&&... args) then
 	(std::cout << ... << args) << '\n';
 end;
 static const char alphabet[26]{ 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
 static const char ALPHABET[26]{ 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
-
+static inline auto randf() { return ((float)std::rand() / (float)RAND_MAX); };
 #ifndef _XS_VEX2_
 temp <typename T> T sto(const std::string&);
 temp <> inline int sto<int>(const std::string& _str) { return std::stoi(_str); };
