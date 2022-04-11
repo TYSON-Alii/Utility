@@ -9,11 +9,13 @@ struct pair {
 #include <string>
 using std::string;
 using std::to_string;
+using std::wstring;
 #include <iostream>
 using std::cout;
 #include <sstream>
 #include <fstream>
 #include <array>
+using std::array;
 #include <deque>
 #include <bitset>
 #include <tuple>
@@ -28,6 +30,7 @@ using std::tuple;
 #include <map>
 #include <unordered_map>
 #include <memory>
+#include <iomanip>
 using namespace std::string_literals;
 template <class T> concept container_t = requires(T a) {
 	{ a.begin() } -> std::convertible_to<typename T::iterator>;
@@ -84,8 +87,11 @@ alias real = float;
 #ifndef _XSLIB2_
 alias boolean = bool;
 #endif
+alias bit = bool;
 alias str = std::string;
+alias wstr = std::wstring;
 alias integer = int;
+alias uint = unsigned int;
 alias i8 = std::int8_t;
 alias i16 = std::int16_t;
 alias i32 = std::int32_t;
@@ -96,18 +102,31 @@ alias u32 = std::uint32_t;
 alias u64 = std::uint64_t;
 alias f32 = float;
 alias f64 = double;
-temp <typename T> alias dict = std::unordered_map<str, T>;
 temp <typename T> alias linked_list = std::list<T>;
 temp <typename T> alias list = std::pmr::vector<T>;
-temp <typename Return_t, typename ...Args> alias func_ptr = Return_t(*)(Args...);
-typedef void* ptr;
-namespace std then
-	inline int  atoi(boolean ref v) then ret v ? 1 : 0; end;
-	inline real atof(boolean ref v) then ret v ? 1.f : 0.f; end;
-	inline boolean atob(const str ref v) then ret (v is "1" or v is "true" or v is "True") ? True : False; end;
-end;
 #undef end
-template <typename T> std::ostream& operator<<(std::ostream& os, const list<T>& v) {
+template <typename Key, typename Value>
+struct dict_pair {
+	Key key;
+	Value value;
+};
+template <typename Key, typename Value>
+std::ostream& operator<<(std::ostream& os, const dict_pair<Key, Value>& v) { return (os << v.key << ":" << v.value); };
+template <typename Key, typename Value>
+class _Dict : public list<dict_pair<Key, Value>> {
+public:
+	using Self_t = list<dict_pair<Key, Value>>;
+	using Self_t::vector;
+	using Self_t::vector::push_back;
+	inline Value& push_back(const Key& key, const Value& value) {
+		Self_t::push_back({ key,value });
+		return Self_t::back().value;
+	};
+	inline auto find(const Key& key) { return std::find_if(Self_t::begin(), Self_t::end(), [&](const dict_pair<Key, Value>& i) -> bool { return i.key == key; }); };
+	inline Value& operator[](const Key& key) { return find(key)->value; };
+	inline void remove(const Key& key) { Self_t::erase(find(key)); };
+};
+template <typename T> std::ostream& operator<<(std::ostream& os, const ::list<T>& v) {
 	const char& beg_char = '[', end_char = ']';
 	if (not v.empty()) {
 		const str& sep = ", ";
@@ -120,6 +139,14 @@ template <typename T> std::ostream& operator<<(std::ostream& os, const list<T>& 
 	return os;
 };
 #define end }
+temp <typename T> alias dict = _Dict<string, T>;
+temp <typename Return_t, typename ...Args> alias func_ptr = Return_t(*)(Args...);
+typedef void* ptr;
+namespace std then
+	inline int  atoi(boolean ref v) then ret v ? 1 : 0; end;
+	inline real atof(boolean ref v) then ret v ? 1.f : 0.f; end;
+	inline boolean atob(const str ref v) then ret (v is "1" or v is "true" or v is "True") ? True : False; end;
+end;
 temp <typename ...Args_t>
 inline fn print(Args_t&&... args) then
 	(std::cout << ... << args) << '\n';
@@ -138,4 +165,22 @@ temp <> inline long sto<long>(const std::string& _str) { return std::stol(_str);
 temp <> inline long long sto<long long>(const std::string& _str) { return std::stoll(_str); };
 temp <> inline unsigned long long sto<unsigned long long>(const std::string& _str) { return std::stoull(_str); };
 #endif
+enum class Color then
+	Black = 0x0,
+	DarkBlue = 0x1,
+	DarkGreen = 0x2,
+	DarkCyan = 0x3,
+	DarkRed = 0x4,
+	DarkMagenta = 0x5,
+	DarkYellow = 0x6,
+	Grey = 0x7,
+	DarkGrey = 0x8,
+	Blue = 0x9,
+	Green = 0xA,
+	Cyan = 0xB,
+	Red = 0xC,
+	Purple = 0xD,
+	Yellow = 0xE,
+	White = 0xF
+end;
 #endif
