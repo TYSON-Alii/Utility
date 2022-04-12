@@ -102,6 +102,7 @@ alias u32 = std::uint32_t;
 alias u64 = std::uint64_t;
 alias f32 = float;
 alias f64 = double;
+inline static const float& pi = 3.14159265359f;
 temp <typename T> alias linked_list = std::list<T>;
 temp <typename T> alias list = std::pmr::vector<T>;
 #undef end
@@ -165,7 +166,7 @@ temp <> inline long sto<long>(const std::string& _str) { return std::stol(_str);
 temp <> inline long long sto<long long>(const std::string& _str) { return std::stoll(_str); };
 temp <> inline unsigned long long sto<unsigned long long>(const std::string& _str) { return std::stoull(_str); };
 #endif
-enum class Color then
+enum class _Color then
 	Black = 0x0,
 	DarkBlue = 0x1,
 	DarkGreen = 0x2,
