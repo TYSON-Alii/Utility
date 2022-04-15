@@ -87,6 +87,7 @@ alias real = float;
 #ifndef _XSLIB2_
 alias boolean = bool;
 #endif
+alias wchar = wchar_t;
 alias bit = bool;
 alias str = std::string;
 alias wstr = std::wstring;
@@ -102,7 +103,7 @@ alias u32 = std::uint32_t;
 alias u64 = std::uint64_t;
 alias f32 = float;
 alias f64 = double;
-inline static const float& pi = 3.14159265359f;
+static inline constexpr const float& pi = 3.14159265359f;
 temp <typename T> alias linked_list = std::list<T>;
 temp <typename T> alias list = std::pmr::vector<T>;
 #undef end
