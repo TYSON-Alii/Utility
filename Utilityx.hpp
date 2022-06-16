@@ -12,6 +12,8 @@ using std::to_string;
 using std::wstring;
 #include <iostream>
 using std::cout;
+using std::cin;
+using std::cerr;
 #include <sstream>
 #include <fstream>
 #include <array>
@@ -84,9 +86,6 @@ template <class T> concept container_t = requires(T a) {
 #define dotspace(_name,body) struct { body } _name;
 //#define def(func_name,...) hash_sign define func_name(__VA_ARGS__)
 alias real = float;
-#ifndef _XSLIB2_
-alias boolean = bool;
-#endif
 alias wchar = wchar_t;
 alias bit = bool;
 alias str = std::string;
@@ -103,7 +102,7 @@ alias u32 = std::uint32_t;
 alias u64 = std::uint64_t;
 alias f32 = float;
 alias f64 = double;
-static inline constexpr const float& pi = 3.14159265359f;
+static inline constexpr const f32& pi = 3.14159265359f;
 temp <typename T> alias linked_list = std::list<T>;
 temp <typename T> alias list = std::pmr::vector<T>;
 #undef end
@@ -124,8 +123,8 @@ public:
 		Self_t::push_back({ key,value });
 		return Self_t::back().value;
 	};
-	inline auto find(const Key& key) { return std::find_if(Self_t::begin(), Self_t::end(), [&](const dict_pair<Key, Value>& i) -> bool { return i.key == key; }); };
-	inline Value& operator[](const Key& key) { return find(key)->value; };
+	inline auto find(const Key& key) { return std::find_if(Self_t::begin(), Self_t::end(), [&](const auto& i) -> bool { return i.key == key; }); };
+	inline Value& operator[](const Key& key) { const auto& f = find(key); return ((f != Self_t::end())?f->value:(push_back(key, Value()))); };
 	inline void remove(const Key& key) { Self_t::erase(find(key)); };
 };
 template <typename T> std::ostream& operator<<(std::ostream& os, const ::list<T>& v) {
@@ -141,13 +140,13 @@ template <typename T> std::ostream& operator<<(std::ostream& os, const ::list<T>
 	return os;
 };
 #define end }
-temp <typename T> alias dict = _Dict<string, T>;
+temp <typename T> alias dict = _Dict<str, T>;
 temp <typename Return_t, typename ...Args> alias func_ptr = Return_t(*)(Args...);
 typedef void* ptr;
 namespace std then
-	inline int  atoi(boolean ref v) then ret v ? 1 : 0; end;
-	inline real atof(boolean ref v) then ret v ? 1.f : 0.f; end;
-	inline boolean atob(const str ref v) then ret (v is "1" or v is "true" or v is "True") ? True : False; end;
+	inline int  atoi(bool ref v) then ret v ? 1 : 0; end;
+	inline real atof(bool ref v) then ret v ? 1.f : 0.f; end;
+	inline bool atob(const str ref v) then ret (v is "1" or v is "true" or v is "True") ? True : False; end;
 end;
 temp <typename ...Args_t>
 inline fn print(Args_t&&... args) then
